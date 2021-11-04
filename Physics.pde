@@ -13,7 +13,7 @@ class Pendulum {
     this.x = l * cos(theta);
     this.y = -l * sin (theta);
     this.velocity = v;
-
+    
   }
   
   public void drawPendulum(){
@@ -24,8 +24,8 @@ class Pendulum {
      
     line(0,0, x,y);
     
-    noStroke();
-    fill(#48cae4);
+    stroke(0);
+    fill(#48cae4, 150);
     ellipse(x , y, 2*r, 2*r);
   
   }
@@ -41,14 +41,24 @@ class Pendulum {
     x = l * cos(theta);
     y = -l * sin(theta);
     
-    println(x +" " + y);
-    println("Acc : " + acc);
-    println("Velocity : " + velocity);
+    //println(x +" " + y);
+    //println("Acc : " + acc);
+    //println("Velocity : " + velocity);
     
-    println("Angle : " + Math.toDegrees(theta));
-    println("---------");
-     
+    //println("Angle : " + Math.toDegrees(theta));
+    //println("---------");
   }
+  
+  public void run_naive(){
+    drawPendulum();
+        
+    acc = (g/l) * (1.5 * PI - theta);
+    velocity += acc * dt;
+    theta += velocity * dt;
     
+    x = l * cos(theta);
+    y = -l * sin(theta);
+    
+  }
   
 }       
